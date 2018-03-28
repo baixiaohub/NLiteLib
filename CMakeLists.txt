@@ -8,6 +8,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(NLITELIB_PROJECT_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 option(BUILD_WITH_SIMD "enable simd math." ON)
+if(BUILD_WITH_SIMD)
+add_definitions(-DNL_BUILD_SIMD)
+endif(BUILD_WITH_SIMD)
 
 if(MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /WX /utf-8")
@@ -18,6 +21,7 @@ elseif(GNU)
     if(BUILD_WITH_SIMD)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse4")
     endif(BUILD_WITH_SIMD)
+#TODO: if android add -mfpu=neon
 endif()
 set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS}")
 
