@@ -5,6 +5,8 @@ project(NLiteLib)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(NLITELIB_PROJECT_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
+
 option(BUILD_WITH_SIMD "enable simd math." ON)
 
 if(MSVC)
